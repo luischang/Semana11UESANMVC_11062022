@@ -4,17 +4,18 @@ using Semana11UESANMVC.WEB.Models;
 namespace Semana11UESANMVC.WEB.Services
 {
     public class CustomerService
-    {     
+    {
         public static async Task<IEnumerable<CustomerModel>> GetAll()
         {
-            //Get all customers
+            //Get All using HttpClient
             string urlBase = "http://localhost:5257/api/Customer/";
-            
-            var client = new HttpClient();
-            var response = await client.GetAsync(urlBase + "GetAll");
-            string result = await response.Content.ReadAsStringAsync();
-            var customers = JsonConvert.DeserializeObject<IEnumerable<CustomerModel>>(result);
+
+            using var httpClient = new HttpClient();
+            using var response = await httpClient.GetAsync(urlBase + "GetAll");
+            string apiResponse = response.Content.ReadAsStringAsync().Result;
+            var customers = JsonConvert.DeserializeObject<IEnumerable<CustomerModel>>(apiResponse);
             return customers;
+
         }
 
 

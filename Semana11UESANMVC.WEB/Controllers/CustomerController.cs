@@ -5,15 +5,16 @@ namespace Semana11UESANMVC.WEB.Controllers
 {
     public class CustomerController : Controller
     {
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             return View();
         }
 
+        [HttpGet]
         public async Task<IActionResult> Listado()
         {
             var customers = await CustomerService.GetAll();
-            return View(customers);
+            return PartialView(customers);
         }
 
         

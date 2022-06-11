@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<CustomerModel>
 
-<table>
+<table id="tbListadoCliente" class="table table-hover">
     <thead>
         <tr>
             <th>Id</th>
@@ -9,29 +9,30 @@
             <th>Ciudad</th>
             <th>País</th>
             <th>Teléfono</th>
-            <th>Acciones</th>           
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var customer in Model)
         {
-            <tr>@customer.Id</tr>   
-            <tr>@customer.FirstName</tr>
-            <tr>@customer.LastName</tr>
-            <tr>@customer.City</tr>
-            <tr>@customer.Country</tr>
-            <tr>@customer.Phone</tr>
             <tr>
-                <button class="btn btn-warning btnEditarCliente" data-id = "@customer.Id">
-                    Editar
-                </button>
-                <button class="btn btn-danger btnEliminarCliente" data-id = "@customer.Id">
-                    Eliminar
-                </button>
+                <td>@customer.Id</td>
+                <td>@customer.FirstName</td>
+                <td>@customer.LastName</td>
+                <td>@customer.City</td>
+                <td>@customer.Country</td>
+                <td>@customer.Phone</td>
+                <td>
+                    <button class="btn btn-warning btnEditarCliente" data-id="@customer.Id">
+                        Editar
+                    </button>
+                    <button class="btn btn-danger btnEliminarCliente" data-id="@customer.Id">
+                        Eliminar
+                    </button>
+                </td>
             </tr>
         }
-        
+
     </tbody>
 </table>
 
-    
