@@ -3,16 +3,72 @@
         <div class="col-md-4">
             <h1>Mantenimiento de Clientes</h1>
         </div>
-         <div class="col-md-2">
-           <button id="btnAgregarCliente" class="btn btn-success">
-               Agregar
-           </button>
+        <div class="col-md-2">
+            <button id="btnAgregarCliente" class="btn btn-success">
+                Agregar
+            </button>
         </div>
     </div>
 </div>
 
+@*Modal*@
+<!-- Modal -->
+<div class="modal fade" id="modalRegistroCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Mantenimiento de Clientes</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="txtIdCliente">Nombre</label>
+                                <input type="text" class="form-control" id="txtNombre" name="txtNombre" placeholder="FirstName">
+                            </div>                         
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="txtIdCliente">Apellido</label>
+                                <input type="text" class="form-control" id="txtApellido" name="txtApellido" placeholder="LastName">
+                            </div>                         
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="txtIdCliente">País</label>
+                                <input type="text" class="form-control" id="txtPais" name="txtPais" placeholder="Country">
+                            </div>                         
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="txtIdCliente">Ciudad</label>
+                                <input type="text" class="form-control" id="txtCiudad" name="txtCiudad" placeholder="City">
+                            </div>                         
+                        </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="txtIdCliente">Teléfono</label>
+                                <input type="text" class="form-control" id="txtTelefono" name="txtTelefono" placeholder="Phone">
+                            </div>                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btnGuardarCliente">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+@*Modal*@
+
 <div id="divListadoCliente" class="divListadoClienteABC">
-    
 </div>
 
 <script>
@@ -25,11 +81,16 @@
             url : '@Url.Action("Listado","Customer")',
             cache: false,
             success: function(dataHTMLClientes){
-                $("#divListadoCliente").html(dataHTMLClientes);            
-            }        
-        });  
+                $("#divListadoCliente").html(dataHTMLClientes);
+            }
+        });
     }
-    
-    
+
+
+    $("#btnAgregarCliente").click(function(){
+        $("#modalRegistroCliente").modal("show");
+    });
+
+
 
 </script>
