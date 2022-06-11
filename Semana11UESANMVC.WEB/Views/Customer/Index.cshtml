@@ -91,6 +91,34 @@
         $("#modalRegistroCliente").modal("show");
     });
 
+    $("#btnGuardarCliente").click(function(){
+        var nombre = $("#txtNombre").val();
+        var apellido = $("#txtApellido").val();
+        var pais = $("#txtPais").val();
+        var ciudad = $("#txtCiudad").val();
+        var telefono = $("#txtTelefono").val();
+
+        $.ajax({
+            type : "POST",
+            url : '@Url.Action("Create","Customer")',
+            data : {
+                idCliente: -1,
+                nombre : nombre,
+                apellido : apellido,
+                pais : pais,
+                ciudad : ciudad,
+                telefono : telefono
+            },
+            cache: false,
+            success: function(dataHTMLClientes){
+                $("#modalRegistroCliente").modal("hide");
+                CargarListadoCliente();
+            }
+        });
+    
+    
+    });
+
 
 
 </script>
