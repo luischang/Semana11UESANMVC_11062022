@@ -36,3 +36,16 @@
     </tbody>
 </table>
 
+<script>
+    loadTable()
+    function loadTable(){
+          var table = $("#tbListadoCliente").DataTable({
+            lengthChange: false,
+            buttons:['copy','excel','pdf','colvis']
+
+        });
+
+        table.buttons().container().insertBefore("#tbListadoCliente_filter"); 
+    }
+
+</script>
